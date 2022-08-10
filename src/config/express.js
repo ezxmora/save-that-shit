@@ -35,7 +35,7 @@ app.use(helmet({
 app.use(cors())
 
 // webpage
-app.use('/', express.static(path.join(__dirname, '../client')))
+app.use('/', express.static(path.join(__dirname, '../client/dist')))
 
 // routes
 app.use('/v1', routes)
