@@ -1,22 +1,22 @@
-import { Switch, Route, useLocation } from 'react-router-dom'
+import React from 'react'
+import { Route, Routes, useLocation } from 'react-router-dom'
 // Pages
 import Root from '../../pages/root'
-import FAQ from '../../pages/faq'
+import Faq from '../../pages/faq'
 
 // Components
 import Navbar from '../navbar'
 
-export default function Layout () {
+const Layout = () => {
   return (
-    <div>
-        <Navbar currentRoute={ useLocation().pathname }/>
-        <hr />
-        <Switch>
-            <div className='container mx-auto bg-red-100'>
-                <Route exact path='/' component={ Root }/>
-                <Route path='/faq' component={ FAQ }/>
-            </div>
-        </Switch>
-    </div>
+    <div className='h-full'>
+      <Navbar currentRoute={useLocation().pathname} />
+      <Routes>
+        <Route exact path='/' element={<Root/>} />
+        <Route path='/faq' element={<Faq/>} />
+      </Routes >
+    </div >
   )
 }
+
+export default Layout

@@ -1,7 +1,9 @@
-import { routes } from './routes'
+import React from 'react'
 import { Link } from 'react-router-dom'
+import { routes } from './routes'
 
-export default function Navbar ({ currentRoute }) {
+
+const Navbar = ({ currentRoute }) => {
   return (
     <nav className="flex justify-between items-center py-4 bg-purple-900">
       <div className="flex-shrink-0 ml-10 cursor-pointer">
@@ -11,16 +13,17 @@ export default function Navbar ({ currentRoute }) {
         {routes.map((route) => {
           const { id, path, value } = route
           return (
-            <li className={ `mr-6 p-1 ${
-               currentRoute === path ? 'text-purple-300' : 'text-purple-50'
-               } hover:text-purple-300` }>
-              <Link key={id} to={path}>
+            <li key={id} className={`mr-6 p-1 ${currentRoute === path ? 'text-purple-300' : 'text-purple-50'
+              } hover:text-purple-300`}>
+              <Link to={path}>
                 {value}
               </Link>
             </li>
-          );
+          )
         })}
       </ul>
     </nav>
-  );
+  )
 }
+
+export default Navbar
